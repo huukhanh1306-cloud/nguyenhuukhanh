@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Hữu Khánh - Digital Marketing & Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FF0033;
+            --accent-color: #00E0FF;
+            --gradient-color: #8B5CF6;
+            --bg-primary: #0E0E0E;
+            --text-light: #EDEDED;
+            --transition: all 0.3s ease;
+            --hover-gradient: linear-gradient(90deg, #FF0033 0%, #FF4EC3 100%);
+            
+            /* Light mode variables */
+            --light-bg: #ffffff;
+            --light-text: #333333;
+            --light-card: #f8f9fa;
+            --light-border: #e0e0e0;
+        }
+
+        * {
+            margin:  0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-light);
+            transition: var(--transition);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body.light-mode {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles - Mobile First */
+        header {
+            padding: 12px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(14, 14, 14, 0.98);
+            transition: var(--transition);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        body.light-mode header {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            cursor: pointer;
+            position: relative;
+            height: 40px;
+            width: 200px;
+            perspective: 500px;
+        }
+
+        .logo-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            backface-visibility: hidden;
+            transition: transform 0.8s ease;
+            transform-style: preserve-3d;
+        }
+
+        .logo-front {
+            transform: rotateY(0deg);
+            font-size: 1.5rem;
+        }
+
+        .logo-back {
+            transform: rotateY(180deg);
+            font-size: 1.2rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .logo.flipped .logo-front {
+            transform: rotateY(-180deg);
+        }
+
+        .logo.flipped .logo-back {
+            transform: rotateY(0deg);
+        }
+
+        /* Mobile Navigation */
+        .nav-links {
+            display: none;
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: inherit;
+            transition: var(--transition);
+            padding: 8px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary-color);
+            background-color: rgba(255, 0, 51, 0.1);
+        }
+
+        /* Hero Section - Mobile First */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 60px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 5%;
+            right: 5%;
+            height: 1px;
+            background: var(--hover-gradient);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .hero-text {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-image {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.03);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 224, 255, 0.3);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        body.light-mode .subtitle {
+            color: var(--light-text);
+        }
+
+        .description {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            max-width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--hover-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 0, 51, 0.3);
+            font-size: 0.95rem;
+            width: fit-content;
+            align-self: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 0, 51, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Section Styles - Mobile First */
+        section {
+            padding: 60px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--hover-gradient);
+        }
+
+        /* Section Dividers */
+        .section-divider {
+            height: 1px;
+            background: var(--hover-gradient);
+            margin: 0 5%;
+            opacity: 0.7;
+        }
+
+        /* About Section - Mobile First */
+        .about {
+            position: relative;
+        }
+
+        .about::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 5%;
+            right: 5%;
+            height: 1px;
+            background: var(--hover-gradient);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-image {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            width: 100%;
+            max-width: 350px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            border: 1px solid var(--gradient-color);
+        }
+
+        body.light-mode .about-image img {
+            border: 1px solid var(--light-border);
+        }
+
+        .about-image img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        /* Skills Section - Mobile First */
+        .skills {
+            position: relative;
+        }
+
+        .skills::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 5%;
+            right: 5%;
+            height: 1px;
+            background: var(--hover-gradient);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .skill-category {
+            background-color: rgba(26, 26, 26, 0.8);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        body.light-mode .skill-category {
+            background-color: var(--light-card);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--light-border);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--gradient-color);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3);
+        }
+
+        body.light-mode .skill-category:hover {
+            box-shadow: 0 0 20px rgba(255, 0, 51, 0.4), 0 0 40px rgba(255, 0, 51, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .skill-category:hover h3 {
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(255, 0, 51, 0.5);
+        }
+
+        body.light-mode .skill-category:hover h3 {
+            text-shadow: 0 0 10px rgba(255, 0, 51, 0.7);
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            justify-content: flex-start;
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            color: var(--primary-color);
+            margin-right: 8px;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .skill-category:hover .skill-list li::before {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px rgba(0, 224, 255, 0.7);
+        }
+
+        body.light-mode .skill-category:hover .skill-list li::before {
+            text-shadow: 0 0 8px rgba(0, 224, 255, 0.9);
+        }
+
+        .skill-category:hover .skill-list li {
+            transform: translateX(5px);
+        }
+
+        /* Projects Section - Mobile First */
+        .projects {
+            position: relative;
+        }
+
+        .projects::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 5%;
+            right: 5%;
+            height: 1px;
+            background: var(--hover-gradient);
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: rgba(26, 26, 26, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        body.light-mode .project-card {
+            background-color: var(--light-card);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--light-border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gradient-color);
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.6), 0 0 50px rgba(139, 92, 246, 0.4);
+        }
+
+        body.light-mode .project-card:hover {
+            box-shadow: 0 0 25px rgba(255, 0, 51, 0.5), 0 0 50px rgba(255, 0, 51, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .project-image {
+            height: 180px;
+            background-color: #1a1a1a;
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition);
+        }
+
+        body.light-mode .project-image {
+            background-color: #f0f0f0;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-content h3 {
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            transition: var(--transition);
+            text-align: center;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card:hover .project-content h3 {
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(255, 0, 51, 0.5);
+        }
+
+        body.light-mode .project-card:hover .project-content h3 {
+            text-shadow: 0 0 10px rgba(255, 0, 51, 0.7);
+        }
+
+        .project-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            flex-grow: 1;
+            font-size: 0.9rem;
+            text-align: center;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Tự động căn chỉnh project-tags */
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+            justify-content: center;
+            align-items: center;
+            min-height: 40px;
+        }
+
+        .tag {
+            background: var(--hover-gradient);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: var(--transition);
+            text-align: center;
+            min-width: 80px;
+            flex-shrink: 0;
+        }
+
+        .project-card:hover .tag {
+            box-shadow: 0 0 10px rgba(255, 0, 51, 0.5);
+        }
+
+        body.light-mode .project-card:hover .tag {
+            box-shadow: 0 0 10px rgba(255, 0, 51, 0.7);
+        }
+
+        /* Căn giữa nút Xem Chi Tiết */
+        .project-card .btn {
+            margin-top: auto;
+            align-self: center;
+            text-align: center;
+            width: fit-content;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 0.9rem;
+            padding: 10px 20px;
+        }
+
+        /* Contact Section - Mobile First */
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--hover-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 5px;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .contact-details p {
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--accent-color);
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            border-radius: 5px;
+            background-color: rgba(26, 26, 26, 0.8);
+            color: inherit;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        body.light-mode .form-control {
+            background-color: var(--light-card);
+            border: 1px solid var(--light-border);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(255, 0, 51, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            text-decoration: none;
+            color: white;
+        }
+
+        body.light-mode .social-link {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: var(--light-text);
+        }
+
+        .social-link:hover {
+            background: var(--hover-gradient);
+            transform: translateY(-3px);
+        }
+
+        /* Footer - Mobile First */
+        footer {
+            background-color: rgba(10, 10, 10, 0.95);
+            color: white;
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        body.light-mode footer {
+            background-color: #f8f9fa;
+            color: var(--light-text);
+            border-top: 1px solid var(--light-border);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .footer-logo .logo {
+            margin-bottom: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-logo p {
+            max-width: 100%;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .footer-links h3 {
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+        }
+
+        body.light-mode .copyright {
+            border-top: 1px solid var(--light-border);
+        }
+
+        /* Project Detail Pages */
+        .project-detail {
+            display: none;
+            padding-top: 80px;
+        }
+
+        .project-hero {
+            padding: 100px 0 50px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.9rem;
+        }
+
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .project-fashion .project-hero {
+            background: linear-gradient(135deg, #FF0033 0%, #FF4EC3 100%);
+        }
+
+        .project-ecommerce .project-hero {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #8B5CF6 100%);
+        }
+
+        .project-social .project-hero {
+            background: linear-gradient(135deg, #FF4EC3 0%, #8B5CF6 100%);
+        }
+
+        .project-hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .project-hero .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .project-content {
+            padding: 60px 0;
+        }
+
+        .project-overview {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-info {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        body.light-mode .project-info {
+            background: var(--light-card);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--light-border);
+        }
+
+        .project-info h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .info-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+            font-size: 0.9rem;
+        }
+
+        body.light-mode .info-item {
+            border-bottom: 1px solid var(--light-border);
+        }
+
+        .info-item strong {
+            color: var(--primary-color);
+        }
+
+        .media-gallery {
+            margin: 40px 0;
+        }
+
+        .gallery-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.7rem;
+            color: var(--accent-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            aspect-ratio: 4/3;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        body.light-mode .gallery-item {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--light-border);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--gradient-color);
+        }
+
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-section {
+            margin-top: 40px;
+        }
+
+        .video-container {
+            max-width: 100%;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .video-container {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        .project-description {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .project-description h3 {
+            color: var(--accent-color);
+            margin: 25px 0 12px;
+            font-size: 1.3rem;
+        }
+
+        .project-description p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .back-to-portfolio {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Mobile Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--bg-primary);
+            z-index: 1001;
+            transition: var(--transition);
+            padding: 80px 30px 30px;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+        }
+
+        body.light-mode .mobile-nav {
+            background: var(--light-bg);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav-links a {
+            color: inherit;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        body.light-mode .mobile-nav-links a {
+            border-bottom: 1px solid var(--light-border);
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Active page */
+        .page-active {
+            display: block;
+        }
+
+        .page-hidden {
+            display: none;
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 768px) {
+            /* Header Desktop */
+            .nav-links {
+                display: flex;
+                list-style: none;
+            }
+
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .nav-links li {
+                margin-left: 25px;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: inherit;
+                font-weight: 500;
+                transition: var(--transition);
+                position: relative;
+                padding: 5px 0;
+                font-size: 0.95rem;
+            }
+
+            .nav-links a:hover {
+                color: var(--accent-color);
+            }
+
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: var(--hover-gradient);
+                transition: var(--transition);
+            }
+
+            .nav-links a:hover::after {
+                width: 100%;
+            }
+
+            /* Hero Desktop */
+            .hero-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .hero-text {
+                flex: 1;
+                padding-right: 40px;
+                text-align: left;
+            }
+
+            .hero-image {
+                flex: 1;
+            }
+
+            .hero-image img {
+                width: 350px;
+                height: 350px;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .subtitle {
+                font-size: 1.5rem;
+            }
+
+            .description {
+                font-size: 1.1rem;
+                max-width: 600px;
+            }
+
+            .btn {
+                align-self: flex-start;
+            }
+
+            /* Section Desktop */
+            section {
+                padding: 100px 0;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+                margin-bottom: 60px;
+            }
+
+            /* About Desktop */
+            .about-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .about-text {
+                flex: 1;
+                text-align: left;
+            }
+
+            .about-text p {
+                text-align: left;
+            }
+
+            .about-image {
+                flex: 1;
+            }
+
+            .about-image img {
+                width: 400px;
+                height: 300px;
+            }
+
+            /* Skills Desktop */
+            .skills-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+
+            .skill-category h3 {
+                text-align: left;
+            }
+
+            /* Projects Desktop */
+            .projects-container {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+
+            .project-image {
+                height: 200px;
+            }
+
+            /* Contact Desktop */
+            .contact-container {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .contact-info {
+                flex: 1;
+            }
+
+            .contact-form {
+                flex: 1;
+            }
+
+            .contact-item {
+                flex-direction: row;
+                align-items: center;
+                text-align: left;
+            }
+
+            .contact-icon {
+                margin-right: 15px;
+                margin-bottom: 0;
+            }
+
+            .social-links {
+                justify-content: flex-start;
+            }
+
+            /* Footer Desktop */
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .footer-logo {
+                flex: 1;
+                text-align: left;
+                min-width: 300px;
+            }
+
+            .footer-logo .logo {
+                margin-left: 0;
+            }
+
+            .footer-logo p {
+                max-width: 300px;
+            }
+
+            .footer-links {
+                flex: 1;
+                text-align: left;
+                min-width: 200px;
+            }
+
+            /* Project Detail Desktop */
+            .project-overview {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .project-hero h1 {
+                font-size: 3rem;
+            }
+
+            .project-hero .subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Large Desktop Styles */
+        @media (min-width: 1200px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-image img {
+                width: 400px;
+                height: 400px;
+            }
+
+            .about-image img {
+                width: 450px;
+                height: 350px;
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Small Mobile Optimization */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 30px;
+            }
+
+            .hero {
+                padding: 90px 0 40px;
+            }
+
+            .hero-image img {
+                width: 250px;
+                height: 250px;
+            }
+
+            .project-content h3 {
+                font-size: 1.1rem;
+                min-height: 50px;
+            }
+
+            .project-content p {
+                min-height: 70px;
+            }
+
+            .tag {
+                font-size: 0.7rem;
+                padding: 5px 10px;
+                min-width: 70px;
+            }
+
+            .skill-category {
+                padding: 20px;
+            }
+
+            .skill-category h3 {
+                font-size: 1.2rem;
+            }
+
+            .skill-list li {
+                font-size: 0.9rem;
+            }
+
+            .form-control {
+                padding: 10px 12px;
+            }
+
+            textarea.form-control {
+                min-height: 100px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Navigation Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="nav-link mobile-nav-link" data-page="home">Trang chủ</a></li>
+            <li><a href="#about" class="nav-link mobile-nav-link" data-page="home">Giới thiệu</a></li>
+            <li><a href="#skills" class="nav-link mobile-nav-link" data-page="home">Kỹ năng</a></li>
+            <li><a href="#projects" class="nav-link mobile-nav-link" data-page="home">Dự án</a></li>
+            <li><a href="#contact" class="nav-link mobile-nav-link" data-page="home">Liên hệ</a></li>
+        </ul>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" id="homeLink">
+                    <div class="logo-text logo-front">Portfolio</div>
+                    <div class="logo-text logo-back">Nguyễn Hữu Khánh</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link" data-page="home">Trang chủ</a></li>
+                    <li><a href="#about" class="nav-link" data-page="home">Giới thiệu</a></li>
+                    <li><a href="#skills" class="nav-link" data-page="home">Kỹ năng</a></li>
+                    <li><a href="#projects" class="nav-link" data-page="home">Dự án</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="home">Liên hệ</a></li>
+                </ul>
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Portfolio Page -->
+    <div id="homePage" class="page-active">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text fade-in">
+                        <h1>Xin chào, tôi là <span class="highlight">Nguyễn Hữu Khánh</span></h1>
+                        <div class="subtitle">Digital Marketing - Designer - Content - SEO</div>
+                        <p class="description">
+                            Tôi là một chuyên gia Digital Marketing và Designer sáng tạo với hơn 5 năm kinh nghiệm 
+                            trong việc xây dựng thương hiệu và chiến lược tiếp thị kỹ thuật số. Tôi đam mê tạo ra 
+                            những trải nghiệm độc đáo và hiệu quả cho khách hàng.
+                        </p>
+                        <a href="#projects" class="btn">Xem Dự Án</a>
+                    </div>
+                    <div class="hero-image fade-in">
+                        <img src="images/avatar.jpg" alt="Hữu Khánh" data-key="hero.name"> 
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">Giới Thiệu</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>
+                            Tôi là một Digital Marketing Specialist và Designer với niềm đam mê sáng tạo 
+                            và chiến lược. Với nền tảng vững chắc trong cả hai lĩnh vực, tôi có khả năng 
+                            kết nối ý tưởng thiết kế với mục tiêu kinh doanh để tạo ra các chiến dịch 
+                            marketing hiệu quả.
+                        </p>
+                        <p>
+                            Trong sự nghiệp của mình, tôi đã làm việc với nhiều thương hiệu từ startup 
+                            đến các tập đoàn lớn, giúp họ xây dựng nhận diện thương hiệu mạnh mẽ và 
+                            triển khai các chiến lược digital marketing thành công.
+                        </p>
+                        <p>
+                            Tôi luôn tìm kiếm những xu hướng mới nhất trong ngành và áp dụng chúng vào 
+                            các dự án của mình để đảm bảo mang lại kết quả tốt nhất cho khách hàng.
+                        </p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://via.placeholder.com/400x300/8B5CF6/ffffff?text=About+Me" alt="About Me">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">Kỹ Năng</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Digital Marketing</h3>
+                        <ul class="skill-list">
+                            <li>SEO (Tối ưu hóa công cụ tìm kiếm)</li>
+                            <li>Content Marketing</li>
+                            <li>Social Media Marketing</li>
+                            <li>Email Marketing</li>
+                            <li>Google Ads & Facebook Ads</li>
+                            <li>Phân tích dữ liệu (Google Analytics)</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Thiết Kế</h3>
+                        <ul class="skill-list">
+                            <li>Thiết kế đồ họa (Photoshop, Illustrator)</li>
+                            <li>UI/UX Design</li>
+                            <li>Thiết kế web (Figma, Adobe XD)</li>
+                            <li>Thiết kế nhận diện thương hiệu</li>
+                            <li>Motion Graphics (After Effects)</li>
+                            <li>Dàn trang & In ấn</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Công Nghệ</h3>
+                        <ul class="skill-list">
+                            <li>HTML/CSS</li>
+                            <li>JavaScript cơ bản</li>
+                            <li>WordPress</li>
+                            <li>Google Analytics & Tag Manager</li>
+                            <li>CRM Systems</li>
+                            <li>Marketing Automation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">Dự Án</h2>
+                <div class="projects-container">
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('https://via.placeholder.com/350x200/FF0033/ffffff?text=Fashion+Brand')"></div>
+                        <div class="project-content">
+                            <h3>Chiến dịch Rebranding cho Thương hiệu Thời trang</h3>
+                            <p>Tôi đã dẫn dắt chiến dịch rebranding toàn diện cho một thương hiệu thời trang cao cấp, bao gồm thiết kế nhận diện mới và chiến lược digital marketing.</p>
+                            <div class="project-tags">
+                                <span class="tag">Branding</span>
+                                <span class="tag">Social Media</span>
+                                <span class="tag">Content Strategy</span>
+                            </div>
+                            <a href="#" class="btn view-project" data-project="fashion">Xem Chi Tiết</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('https://via.placeholder.com/350x200/00E0FF/ffffff?text=E-commerce')"></div>
+                        <div class="project-content">
+                            <h3>Website E-commerce & Chiến lược SEO</h3>
+                            <p>Phát triển website e-commerce với chiến lược SEO toàn diện, giúp tăng traffic tự nhiên lên 200% trong 6 tháng.</p>
+                            <div class="project-tags">
+                                <span class="tag">Web Design</span>
+                                <span class="tag">SEO</span>
+                                <span class="tag">E-commerce</span>
+                            </div>
+                            <a href="#" class="btn view-project" data-project="ecommerce">Xem Chi Tiết</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image" style="background-image: url('https://via.placeholder.com/350x200/8B5CF6/ffffff?text=Social+Media')"></div>
+                        <div class="project-content">
+                            <h3>Chiến dịch Social Media cho Sản phẩm Mới</h3>
+                            <p>Triển khai chiến dịch social media thành công cho sản phẩm mới, đạt 50K engagement và tăng doanh số 150%.</p>
+                            <div class="project-tags">
+                                <span class="tag">Social Media</span>
+                                <span class="tag">Content Creation</span>
+                                <span class="tag">Campaign</span>
+                            </div>
+                            <a href="#" class="btn view-project" data-project="social">Xem Chi Tiết</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Liên Hệ</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <p>huukhanh1306@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Điện thoại (Zalo)</h3>
+                                <p>+84 0362619751</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Địa chỉ</h3>
+                                <p>TP Hồ Chí Minh, Việt Nam</p>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="zalo"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Họ và tên</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Tiêu đề</label>
+                                <input type="text" id="subject" name="subject" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Nội dung</label>
+                                <textarea id="message" name="message" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Gửi Tin Nhắn</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <div class="logo">
+                            <div class="logo-text logo-front">Portfolio</div>
+                            <div class="logo-text logo-back">Nguyễn Hữu Khánh</div>
+                        </div>
+                        <p>Digital Marketing Specialist & Designer với niềm đam mê sáng tạo và chiến lược.</p>
+                    </div>
+                    <div class="footer-links">
+                        <h3>Liên kết nhanh</h3>
+                        <ul>
+                            <li><a href="#home" class="nav-link" data-page="home">Trang chủ</a></li>
+                            <li><a href="#about" class="nav-link" data-page="home">Giới thiệu</a></li>
+                            <li><a href="#skills" class="nav-link" data-page="home">Kỹ năng</a></li>
+                            <li><a href="#projects" class="nav-link" data-page="home">Dự án</a></li>
+                            <li><a href="#contact" class="nav-link" data-page="home">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h3>Dịch vụ</h3>
+                        <ul>
+                            <li><a href="#">Digital Marketing</a></li>
+                            <li><a href="#">Thiết kế đồ họa</a></li>
+                            <li><a href="#">Thiết kế UI/UX</a></li>
+                            <li><a href="#">Tư vấn chiến lược</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 Portfolio. Bản quyền thuộc về Nguyễn Hữu Khánh.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Project Detail Pages -->
+    
+    <!-- Fashion Project Detail -->
+    <div id="fashionProject" class="project-detail project-fashion">
+        <section class="project-hero">
+            <a href="#" class="back-button back-to-home">
+                <i class="fas fa-arrow-left"></i> <span>Quay lại Portfolio</span>
+            </a>
+            <div class="container">
+                <h1>Chiến dịch Rebranding cho Thương hiệu Thời trang</h1>
+                <p class="subtitle">Thiết kế nhận diện thương hiệu mới và chiến lược digital marketing toàn diện</p>
+            </div>
+        </section>
+
+        <section class="project-content">
+            <div class="container">
+                <div class="project-overview">
+                    <div class="project-info">
+                        <h3>Thông tin Dự án</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <strong>Khách hàng:</strong>
+                                <span>Thương hiệu thời trang cao cấp</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Thời gian:</strong>
+                                <span>6 tháng</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Vai trò:</strong>
+                                <span>Digital Marketing Specialist & Designer</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Dịch vụ:</strong>
+                                <span>Branding, Social Media, Content Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h3>Mô tả Dự án</h3>
+                        <p>Dẫn dắt chiến dịch rebranding toàn diện cho một thương hiệu thời trang cao cấp, bao gồm thiết kế hệ thống nhận diện thương hiệu mới và phát triển chiến lược digital marketing hiệu quả.</p>
+                        <p>Dự án tập trung vào việc định vị lại thương hiệu, thu hút đối tượng khách hàng mục tiêu và tăng cường sự hiện diện trực tuyến.</p>
+                    </div>
+                </div>
+
+                <div class="media-gallery">
+                    <h2 class="gallery-title">Hình Ảnh Dự Án</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/400x300/FF0033/ffffff?text=Thiết+kế+Logo" alt="Thiết kế logo mới">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/400x300/8B5CF6/ffffff?text=Bộ+Nhận+Diện" alt="Bộ nhận diện thương hiệu">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/400x300/FF4EC3/ffffff?text=Social+Media" alt="Chiến dịch social media">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/400x300/00E0FF/ffffff?text=Campaign" alt="Ảnh campaign">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-section">
+                    <h2 class="gallery-title">Video Giới Thiệu</h2>
+                    <div class="video-container">
+                        <video controls poster="https://via.placeholder.com/800x450/FF0033/ffffff?text=Video+Thumbnail">
+                            <source src="#" type="video/mp4">
+                            Trình duyệt của bạn không hỗ trợ video.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="project-description">
+                    <h3>Chiến lược & Kết quả</h3>
+                    <p>Chiến dịch rebranding bắt đầu với việc nghiên cứu thị trường và phân tích đối thủ cạnh tranh. Chúng tôi đã phát triển một hệ thống nhận diện thương hiệu mới phản ánh đúng giá trị và tầm nhìn của khách hàng.</p>
+                    
+                    <h3>Quy trình Thực hiện</h3>
+                    <p>1. Nghiên cứu & Phân tích thị trường</p>
+                    <p>2. Thiết kế hệ thống nhận diện thương hiệu</p>
+                    <p>3. Phát triển chiến lược digital marketing</p>
+                    <p>4. Triển khai chiến dịch social media</p>
+                    <p>5. Đo lường và tối ưu hóa hiệu suất</p>
+                    
+                    <h3>Kết quả Đạt được</h3>
+                    <p>• Tăng 150% lượt tương tác trên mạng xã hội</p>
+                    <p>• Tăng 80% traffic website</p>
+                    <p>• Tăng 45% doanh số bán hàng online</p>
+                    <p>• Nhận diện thương hiệu được cải thiện đáng kể</p>
+                </div>
+
+                <div class="back-to-portfolio">
+                    <a href="#" class="btn btn-outline back-to-home">Quay lại Portfolio</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- E-commerce Project Detail -->
+    <div id="ecommerceProject" class="project-detail project-ecommerce">
+        <section class="project-hero">
+            <a href="#" class="back-button back-to-home">
+                <i class="fas fa-arrow-left"></i> <span>Quay lại Portfolio</span>
+            </a>
+            <div class="container">
+                <h1>Website E-commerce & Chiến lược SEO</h1>
+                <p class="subtitle">Phát triển website thương mại điện tử với chiến lược SEO toàn diện</p>
+            </div>
+        </section>
+
+        <section class="project-content">
+            <div class="container">
+                <div class="project-overview">
+                    <div class="project-info">
+                        <h3>Thông tin Dự án</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <strong>Khách hàng:</strong>
+                                <span>Công ty thương mại điện tử</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Thời gian:</strong>
+                                <span>8 tháng</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Vai trò:</strong>
+                                <span>SEO Specialist & Web Designer</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Dịch vụ:</strong>
+                                <span>Web Design, SEO, Content Strategy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h3>Mô tả Dự án</h3>
+                        <p>Phát triển website e-commerce với chiến lược SEO toàn diện, giúp tăng traffic tự nhiên lên 200% trong 6 tháng và cải thiện đáng kể tỷ lệ chuyển đổi.</p>
+                        <p>Dự án tập trung vào việc tối ưu hóa trải nghiệm người dùng và triển khai các chiến thuật SEO technical và content hiệu quả.</p>
+                    </div>
+                </div>
+
+                <div class="media-gallery">
+                    <h2 class="gallery-title">Hình Ảnh Dự Án</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/400x300/00E0FF/ffffff?text=Trang+Chủ" alt="Thiết kế trang chủ">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/400x300/8B5CF6/ffffff?text=Trang+Sản+Phẩm" alt="Trang sản phẩm">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/400x300/FF0033/ffffff?text=UI/UX+Design" alt="Thiết kế UI/UX">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/400x300/FF4EC3/ffffff?text=Analytics" alt="Phân tích hiệu suất">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-section">
+                    <h2 class="gallery-title">Video Demo Website</h2>
+                    <div class="video-container">
+                        <video controls poster="https://via.placeholder.com/800x450/00E0FF/ffffff?text=Video+Thumbnail">
+                            <source src="#" type="video/mp4">
+                            Trình duyệt của bạn không hỗ trợ video.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="project-description">
+                    <h3>Chiến lược SEO & Phát triển</h3>
+                    <p>Chiến lược được triển khai với sự kết hợp giữa SEO technical, content chất lượng cao và tối ưu hóa trải nghiệm người dùng.</p>
+                    
+                    <h3>Công nghệ Sử dụng</h3>
+                    <p>• WordPress/WooCommerce</p>
+                    <p>• HTML5/CSS3/JavaScript</p>
+                    <p>• Google Analytics & Search Console</p>
+                    <p>• Các công cụ SEO chuyên dụng</p>
+                    
+                    <h3>Kết quả Đạt được</h3>
+                    <p>• Tăng 200% traffic tự nhiên trong 6 tháng</p>
+                    <p>• Từ khóa top 1-3 tăng 150%</p>
+                    <p>• Tỷ lệ chuyển đổi tăng 35%</p>
+                    <p>• Thời gian onsite tăng 40%</p>
+                    <p>• Tỉ lệ bounce rate giảm 25%</p>
+                </div>
+
+                <div class="back-to-portfolio">
+                    <a href="#" class="btn btn-outline back-to-home">Quay lại Portfolio</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Social Media Project Detail -->
+    <div id="socialProject" class="project-detail project-social">
+        <section class="project-hero">
+            <a href="#" class="back-button back-to-home">
+                <i class="fas fa-arrow-left"></i> <span>Quay lại Portfolio</span>
+            </a>
+            <div class="container">
+                <h1>Chiến dịch Social Media cho Sản phẩm Mới</h1>
+                <p class="subtitle">Triển khai chiến dịch social media thành công với 50K engagement</p>
+            </div>
+        </section>
+
+        <section class="project-content">
+            <div class="container">
+                <div class="project-overview">
+                    <div class="project-info">
+                        <h3>Thông tin Dự án</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <strong>Khách hàng:</strong>
+                                <span>Công ty công nghệ</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Thời gian:</strong>
+                                <span>3 tháng</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Vai trò:</strong>
+                                <span>Social Media Manager</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Nền tảng:</strong>
+                                <span>Facebook, Instagram, TikTok</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <h3>Mô tả Dự án</h3>
+                        <p>Triển khai chiến dịch social media thành công cho sản phẩm mới, đạt 50K engagement và tăng doanh số 150% trong quý đầu tiên ra mắt.</p>
+                        <p>Chiến dịch tập trung vào việc tạo nội dung hấp dẫn, tương tác cao và tận dụng các tính năng mới nhất của các nền tảng mạng xã hội.</p>
+                    </div>
+                </div>
+
+                <div class="media-gallery">
+                    <h2 class="gallery-title">Nội dung Social Media</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/400x300/FF4EC3/ffffff?text=Facebook+Post" alt="Bài post Facebook">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/400x300/8B5CF6/ffffff?text=Instagram+Content" alt="Content Instagram">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/400x300/00E0FF/ffffff?text=TikTok+Video" alt="Video TikTok">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://via.placeholder.com/400x300/FF0033/ffffff?text=Instagram+Story" alt="Instagram Story">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-section">
+                    <h2 class="gallery-title">Video Campaign</h2>
+                    <div class="video-container">
+                        <video controls poster="https://via.placeholder.com/800x450/FF4EC3/ffffff?text=Video+Thumbnail">
+                            <source src="#" type="video/mp4">
+                            Trình duyệt của bạn không hỗ trợ video.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="project-description">
+                    <h3>Chiến lược Social Media</h3>
+                    <p>Chiến dịch được triển khai trên đa nền tảng với nội dung được tối ưu hóa cho từng kênh, tập trung vào việc xây dựng cộng đồng và tạo tương tác cao.</p>
+                    
+                    <h3>Kênh Thực hiện</h3>
+                    <p>• Facebook: Content viral & quảng cáo targeted</p>
+                    <p>• Instagram: Visual content & Stories</p>
+                    <p>• TikTok: Short-form video content</p>
+                    <p>• LinkedIn: Professional content</p>
+                    
+                    <h3>Kết quả Đạt được</h3>
+                    <p>• 50,000+ tổng engagement</p>
+                    <p>• Tăng 150% doanh số sản phẩm mới</p>
+                    <p>• 25,000+ follower mới</p>
+                    <p>• Tỉ lệ engagement rate: 8.5%</p>
+                    <p>• 1.2M+ lượt reach tổng cộng</p>
+                </div>
+
+                <div class="back-to-portfolio">
+                    <a href="#" class="btn btn-outline back-to-home">Quay lại Portfolio</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Chức năng chuyển đổi chế độ sáng/tối
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const themeIcon = document.querySelector('.theme-toggle i');
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Xử lý form liên hệ
+        function handleSubmit(event) {
+            event.preventDefault();
+            const successMessage = 'Cảm ơn bạn đã liên hệ! Tôi sẽ phản hồi sớm nhất có thể.';
+            alert(successMessage);
+            event.target.reset();
+        }
+
+        // Chuyển đổi giữa các trang
+        function showPage(pageId) {
+            console.log('Attempting to show page:', pageId);
+            
+            // Ẩn tất cả các trang
+            document.querySelectorAll('.project-detail, #homePage').forEach(page => {
+                page.classList.remove('page-active');
+                page.style.display = 'none';
+            });
+            
+            // Hiển thị trang được chọn
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+                targetPage.classList.add('page-active');
+                
+                // Cuộn lên đầu trang
+                window.scrollTo(0, 0);
+                console.log('Successfully showed page:', pageId);
+            } else {
+                console.error('Page not found:', pageId);
+            }
+        }
+
+        // Hiệu ứng xoay chữ trong logo
+        function toggleLogo() {
+            const logo = document.querySelector('.logo');
+            logo.classList.toggle('flipped');
+        }
+
+        // Mobile Menu Functionality
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('overlay');
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Tự động căn chỉnh các phần tử
+        function autoAlignElements() {
+            // Căn giữa các thẻ tag trong project-tags
+            document.querySelectorAll('.project-tags').forEach(tagsContainer => {
+                const tags = tagsContainer.querySelectorAll('.tag');
+                if (tags.length > 0) {
+                    // Tính toán số lượng tag và căn chỉnh
+                    const containerWidth = tagsContainer.offsetWidth;
+                    const tagWidth = tags[0].offsetWidth + 8; // 8px là gap
+                    const tagsPerRow = Math.floor(containerWidth / tagWidth);
+                    
+                    // Nếu chỉ có 1 tag, căn giữa
+                    if (tags.length === 1) {
+                        tagsContainer.style.justifyContent = 'center';
+                    } 
+                    // Nếu số tag ít hơn số có thể hiển thị trên một hàng, căn giữa
+                    else if (tags.length < tagsPerRow) {
+                        tagsContainer.style.justifyContent = 'center';
+                    } 
+                    // Ngược lại, căn đều
+                    else {
+                        tagsContainer.style.justifyContent = 'space-between';
+                    }
+                }
+            });
+        }
+
+        // Khởi tạo sự kiện khi trang tải xong
+        document.addEventListener('DOMContentLoaded', function() {
+            // Khôi phục chế độ sáng/tối từ localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                document.querySelector('.theme-toggle i').className = 'fas fa-moon';
+            } else {
+                document.querySelector('.theme-toggle i').className = 'fas fa-sun';
+            }
+            
+            // Gán sự kiện
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+            document.getElementById('contactForm').addEventListener('submit', handleSubmit);
+            
+            // Sự kiện cho các nút xem dự án - SỬA LỖI Ở ĐÂY
+            document.querySelectorAll('.view-project').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('View project button clicked');
+                    const project = this.getAttribute('data-project');
+                    console.log('Project:', project);
+                    showPage(project + 'Project');
+                });
+            });
+            
+            // Sự kiện cho các nút quay lại
+            document.querySelectorAll('.back-to-home, #homeLink, .nav-link').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetPage = this.getAttribute('data-page') || 'home';
+                    showPage(targetPage + 'Page');
+                    
+                    // Đóng mobile menu nếu đang mở
+                    const mobileNav = document.getElementById('mobileNav');
+                    const overlay = document.getElementById('overlay');
+                    if (mobileNav.classList.contains('active')) {
+                        mobileNav.classList.remove('active');
+                        overlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+            
+            // Sự kiện cho mobile menu
+            document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+            document.getElementById('mobileNavClose').addEventListener('click', toggleMobileMenu);
+            document.getElementById('overlay').addEventListener('click', toggleMobileMenu);
+            
+            // Sự kiện cho các link trong mobile menu
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', toggleMobileMenu);
+            });
+            
+            // Thêm hiệu ứng scroll mượt mà
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href.startsWith('#') && document.querySelector(href)) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Tự động xoay logo mỗi 3 giây
+            setInterval(toggleLogo, 3000);
+            
+            // Tự động căn chỉnh khi trang tải xong
+            autoAlignElements();
+            
+            // Tự động căn chỉnh khi thay đổi kích thước cửa sổ
+            window.addEventListener('resize', autoAlignElements);
+        });
+    </script>
+</body>
+</html>
