@@ -1425,6 +1425,90 @@
         .fade-in {
             animation: fadeIn 1s ease forwards;
         }
+
+        /* Zalo Button Styles */
+        .zalo-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .animated_zalo {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #00B0F0;
+            border-radius: 50%;
+            animation-duration: 1.2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .cmoz-alo-circle {
+            opacity: .1;
+            border: 2px solid #00B0F0;
+        }
+
+        .cmoz-alo-circle-fill {
+            opacity: .3;
+            background-color: #00B0F0;
+        }
+
+        .zoomIn_zalo {
+            animation-name: zoomInZalo;
+        }
+
+        .pulse_zalo {
+            animation-name: pulseZalo;
+        }
+
+        @keyframes zoomInZalo {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes pulseZalo {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.1;
+            }
+            100% {
+                transform: scale(1.4);
+                opacity: 0;
+            }
+        }
+
+        .zalo-container a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .zalo-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .zalo-social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
     </style>
 </head>
 <body>
@@ -1489,7 +1573,7 @@
                         <a href="#projects" class="btn">Xem Dự Án</a>
                     </div>
                     <div class="hero-image fade-in">
-                        <img src="images/avatar.jpg" alt="Ảnh đại diện Nguyễn Hữu Khánh" /> 
+                        <img src="images/avatar.jpg" alt="Hữu Khánh" data-key="hero.name"> 
                     </div>
                 </div>
             </div>
@@ -1656,10 +1740,20 @@
                             </div>
                         </div>
                         <div class="social-links">
-                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-link"><i class="zalo"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/huukhanh1306" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/hyunwoo_1306/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <!-- Biểu tượng Zalo mới với hiệu ứng -->
+                            <div class="zalo-social-link">
+                                <div class="zalo-container left">
+                                    <a id="zalo-btn" href="https://zalo.me/0362619751" target="_blank" rel="noopener nofollow">
+                                        <div class="animated_zalo infinite zoomIn_zalo cmoz-alo-circle"></div>
+                                        <div class="animated_zalo infinite pulse_zalo cmoz-alo-circle-fill"></div>
+                                        <span><img src="https://vutruso.com/wp-content/uploads/2024/05/zalo-2.png" alt="Contact Me on Zalo"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Biểu tượng Website -->
+                            <a href="https://huukhanh1306-cloud.github.io/nguyenhuukhanh/" target="_blank" class="social-link"><i class="fas fa-globe"></i></a>
                         </div>
                     </div>
                     <div class="contact-form">
@@ -2186,6 +2280,3 @@
     </script>
 </body>
 </html>
-
-
-
